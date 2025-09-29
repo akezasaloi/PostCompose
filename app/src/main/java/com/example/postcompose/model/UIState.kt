@@ -1,4 +1,4 @@
-package com.example.postscompose.model
+package com.example.postcompose.model
 
 data class UIState(
     val isLoading: Boolean=false,

@@ -26,7 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.postcompose.model.Post
 import com.example.postcompose.viewmodel.PostsViewModel
-import com.example.postscompose.model.UIState
+import com.example.postcompose.model.UIState
 import org.koin.androidx.compose.koinViewModel
 
 

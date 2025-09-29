@@ -5,9 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.postcompose.model.Comment
 import com.example.postcompose.model.Post
-import com.example.postscompose.model.UIState
+import com.example.postcompose.model.UIState
 import com.example.postscompose.repository.PostsRepository
-import com.example.postscompose.repository.PostsRepositoryImpl
 import kotlinx.coroutines.launch
 
 class PostsViewModel(val postsRepository: PostsRepository): ViewModel() {
@@ -40,7 +39,7 @@ class PostsViewModel(val postsRepository: PostsRepository): ViewModel() {
             val response = postsRepository.fetchPostById(postId)
             if (response.isSuccessful) {
                 uiState.value = uiState.value?.copy(
-                    success = "Fetch post by ID successfully",
+                    success = "Fetch post successfully",
                     isLoading = false
                 )
                 post.postValue(response.body())
