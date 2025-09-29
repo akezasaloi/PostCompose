@@ -37,6 +37,18 @@ android {
     buildFeatures {
         compose = true
     }
+
+    packaging {
+        resources {
+            excludes += setOf(
+                "META-INF/LICENSE-notice.md",
+                "META-INF/LICENSE.md",
+                "META-INF/NOTICE.md",
+                "META-INF/ASL2.0",
+                "META-INF/LGPL2.1"
+            )
+        }
+    }
 }
 
 dependencies {
@@ -67,15 +79,15 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.koin.android.v350)
     implementation(libs.koin.androidx.compose.v350)
-    testImplementation("junit:junit:4.13.2")
+//    testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
     testImplementation("io.mockk:mockk:1.13.8")
     testImplementation("androidx.test:core:1.5.0")
     testImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.4")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.5.4")
+//    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.4")
+//    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+//    debugImplementation("androidx.compose.ui:ui-test-manifest:1.5.4")
     androidTestImplementation("io.mockk:mockk-android:1.13.8")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 

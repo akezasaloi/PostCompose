@@ -14,7 +14,6 @@ import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import net.bytebuddy.matcher.ElementMatchers.returns
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule

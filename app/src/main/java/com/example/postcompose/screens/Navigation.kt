@@ -5,8 +5,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.postcompose.ui.theme.ViewPostScreen
-import com.example.postscompose.screens.PostsScreen
-import okhttp3.Route
 
 sealed class Screen(val route: String) {
     object Posts : Screen("posts")
@@ -19,7 +17,7 @@ sealed class Screen(val route: String) {
         NavHost(navController = navController,
             startDestination = Posts.route) {
             composable(Posts.route) {
-                PostsScreen(
+                PostsScreenImpl(
                     onClickPost = { postId -> navController.navigate("${ViewPost.route}/${postId}") })
             }
             composable("{ViewPost.route}/{postId}") { navBackStackEntry ->

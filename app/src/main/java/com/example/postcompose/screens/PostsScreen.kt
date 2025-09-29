@@ -1,4 +1,4 @@
-package com.example.postscompose.screens
+package com.example.postcompose.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -32,8 +33,10 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 
-fun PostsScreen(onClickPost: (Int)-> Unit,
-                viewModel: PostsViewModel = koinViewModel()){
+fun PostsScreenImpl(
+    onClickPost: (Int)-> Unit,
+    viewModel: PostsViewModel = koinViewModel())
+{
     LaunchedEffect(Unit) {
         viewModel.fetchPosts()
     }
@@ -46,13 +49,14 @@ fun PostsScreen(onClickPost: (Int)-> Unit,
         uiState.isLoading ->{
             Box(Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center){
-                CircularProgressIndicator()
+                CircularProgressIndicator(modifier = Modifier.testTag("progressBar"))
             }
 
         }
         uiState.success != null ->{
             if (posts != null){
-                LazyColumn (verticalArrangement = Arrangement.spacedBy(16.dp)){
+                LazyColumn (verticalArrangement = Arrangement.spacedBy(16.dp),
+                    modifier = Modifier.testTag("postsList")){
                     items(posts!!){post -> PostCard(post, onClickPost) }
                 }
             }
@@ -74,7 +78,7 @@ fun PostsScreen(onClickPost: (Int)-> Unit,
 fun PostCard(post: Post, onClickPost: (Int) -> Unit) {
     Card(
         onClick = { onClickPost(post.id) },
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().testTag("clickablePost"),
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(
