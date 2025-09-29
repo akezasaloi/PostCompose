@@ -7,7 +7,6 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.lifecycle.MutableLiveData
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.postcompose.model.Post
 import com.example.postcompose.model.UIState
 import com.example.postcompose.screens.PostsScreenImpl
 import com.example.postcompose.viewmodel.PostsViewModel
@@ -42,6 +41,7 @@ class PostScreenTest {
         val uiState = UIState(isLoading = true)
         every { mockViewModel.uiState } returns MutableLiveData(uiState)
         every { mockViewModel.posts } returns MutableLiveData(emptyList())
+        every { mockViewModel.fetchPosts() } returns Unit
 
 
         composeTestRule.setContent {
